@@ -1,0 +1,1 @@
+ /Users/sirawitkc/Documents/SirawitTop/flutterproject/Flutter-Final-Mobile-Project/.dart_tool/flutter_build/492853c8e5d670409703789be49d5faf/native_assets.yaml: 
