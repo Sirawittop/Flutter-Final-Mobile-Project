@@ -83,14 +83,19 @@ class _ToDoListState extends State<ToDoList> {
                             color: Colors.white
                           ),
                           child: Column(
+                            
                             children: [
+                              const Divider(
+                                height:3,
+                                color: Colors.red,
+                              ),
                               ListTile(
                                 title: Text(title),
                                 subtitle: Text(datetime),
                               ),
                               const Divider(
                                 height:3,
-                                color: Colors.black,
+                                color: Colors.red,
                               )
                             ],
                           ),
@@ -102,7 +107,16 @@ class _ToDoListState extends State<ToDoList> {
                 }
               },
             ),
-          )
+          ),
+          Positioned(
+              left: 0, // Adjust the left position of the rectangle
+              top: 770, // Adjust the top position of the rectangle
+              child: Container(
+                width: 430, // Width of the rectangle
+                height: 40, // Height of the rectangle
+                color: const Color.fromRGBO(255, 181, 167, 1),// Color of the rectangle
+              ),
+            ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
