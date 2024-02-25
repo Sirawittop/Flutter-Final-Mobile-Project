@@ -48,11 +48,57 @@ class _ToDoListState extends State<ToDoList> {
                   );
                 } else if (snapshot.data!.isEmpty) {
                   return const Center(
-                    child: Text('No Data Found'),
+                    child: Text('ไม่พบข้อมูลที่บันทึก'),
                   );
                 } else {
-                  // Return your list view here based on snapshot.data
-                  return Container();
+                  return ListView.builder(
+                    shrinkWrap:  true,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context , index){
+                      int id = snapshot.data![index].id!.toInt();
+                      String title = snapshot.data![index].title!.toString();
+                      String datetime = snapshot.data![index].datetime!.toString();
+                      return Dismissible(
+                        key: ValueKey<int>(id),
+                        direction: DismissDirection.endToStart,
+                        background: Container(
+                          color: Colors.red,
+                          alignment: Alignment.centerRight,
+                          padding: const EdgeInsets.only(right: 20),
+                          child: const Icon(
+                            Icons.delete,
+                            color: Colors.white,
+                          ),
+                        ),
+                        onDismissed: (DismissDirection direction){
+                          setState(() {
+                            dbHelper!.delete(id);
+                            dataList = dbHelper!.getDataList();
+                            snapshot.data!.remove(snapshot.data![index]);
+                          });
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.all(5),
+                          decoration: const BoxDecoration(
+                            color: Colors.white
+                          ),
+                          child: Column(
+                            children: [
+                              ListTile(
+                                title: Text(title),
+                                subtitle: Text(datetime),
+                              ),
+                              const Divider(
+                                height:3,
+                                color: Colors.black,
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+
+                    },
+                  );
                 }
               },
             ),

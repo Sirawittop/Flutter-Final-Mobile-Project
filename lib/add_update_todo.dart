@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutterproject/db_handler.dart';
 import 'package:flutterproject/model.dart';
 
@@ -46,12 +45,21 @@ class _AddUpadetTaskState extends State<AddUpadetTask> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Positioned(
+                child: Image.asset(
+                  'icon/study.jpg', // Load image from assets
+                  width: 200, // Width of the image
+                  height: 200, // Height of the image
+                ),
+              ),
+              const SizedBox(
+                  height: 100), // Add space between the image and the form
               Form(
                 key: _formKey,
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
                         keyboardType: TextInputType.multiline,
                         controller: titleControler,
@@ -73,12 +81,12 @@ class _AddUpadetTaskState extends State<AddUpadetTask> {
                       height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
                         keyboardType: TextInputType.multiline,
                         controller: dateControler,
                         decoration: InputDecoration(
-                          labelText: 'กำหนดระยะเวลา',
+                          labelText: 'รายละเอียด',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -98,87 +106,83 @@ class _AddUpadetTaskState extends State<AddUpadetTask> {
                 height: 40,
               ),
 
-              Positioned(
-                left: 200,
-                top: 60,
-                child: Container(
-                  width: 140,
-                  height: 51,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.red,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(40),
-                  ),
-                ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Material(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.red,
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            margin: const EdgeInsets.symmetric(horizontal: 35),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            height: 50,
+                            width: 130,
+                            child: const Text(
+                              'ยกเลิก',
+                              style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 20,
+                                fontFamily: "Itim",
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Material(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(50),
+                        child: InkWell(
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {
+                             dbHelper!.insert(TodoModel(
+                                title: titleControler.text,
+                                datetime: dateControler.text,
+                              ));
+                              setState(() {
+                              dataList = dbHelper!.getDataList();
+                              Navigator.pop(context); });
+                            }
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Colors.green,
+                                width: 1,
+                              ),
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            margin: const EdgeInsets.symmetric(horizontal: 50),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            height: 50,
+                            width: 130,
+                            child: const Text(
+                              'บันทึก',
+                              style: TextStyle(
+                                color: Colors.green,
+                                fontSize: 20,
+                                fontFamily: "Itim",
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
               ),
-
-              // SizedBox(
-              //   width: MediaQuery.of(context).size.width,
-              //   child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //       children: [
-              //         Material(
-              //           color: Colors.white,
-              //           borderRadius: BorderRadius.circular(50),
-              //           child: InkWell(
-              //             onTap: () {},
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               decoration: BoxDecoration(
-              //                 border: Border.all(
-              //                   color: Colors.red,
-              //                   width: 1,
-              //                 ),
-              //                 borderRadius: BorderRadius.circular(50),
-              //               ),
-              //               margin: const EdgeInsets.symmetric(horizontal:35),
-              //               padding: const EdgeInsets.symmetric(horizontal: 10),
-              //               height: 50,
-              //               width: 130,
-              //               child: const Text(
-              //                 'ยกเลิก',
-              //                 style: TextStyle(
-              //                   color: Colors.red,
-              //                   fontSize: 20,
-              //                   fontFamily: "Itim",
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //         Material(
-              //           color: Colors.white,
-              //           borderRadius: BorderRadius.circular(50),
-              //           child: InkWell(
-              //             onTap: () {},
-              //             child: Container(
-              //               alignment: Alignment.center,
-              //               decoration: BoxDecoration(
-              //                 border: Border.all(
-              //                   color: Colors.green,
-              //                   width: 1,
-              //                 ),
-              //                 borderRadius: BorderRadius.circular(50),
-              //               ),
-              //               margin: const EdgeInsets.symmetric(horizontal: 50),
-              //               padding: const EdgeInsets.symmetric(horizontal: 10),
-              //               height: 50,
-              //               width: 130,
-              //               child: const Text(
-              //                 'บันทึก',
-              //                 style: TextStyle(
-              //                   color: Colors.green,
-              //                   fontSize: 20,
-              //                   fontFamily: "Itim",
-              //                 ),
-              //               ),
-              //             ),
-              //           ),
-              //         ),
-              //       ]),
-              // ),
             ],
           ),
         ),
