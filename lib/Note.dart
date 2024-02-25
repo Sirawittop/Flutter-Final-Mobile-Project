@@ -21,24 +21,23 @@ class Note extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 320, // Adjust the left position of the circle
-              top: 660, // Adjust the top position of the circle
+              left: 340, // Adjust the left position of the circle
+              top: 670, // Adjust the top position of the circle
               child: Container(
-                width: 80, // Diameter of the circle
-                height: 80, // Diameter of the circle
+                width: 60, // Diameter of the circle
+                height: 60, // Diameter of the circle
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color:
-                      Color.fromARGB(255, 204, 213, 174),
+                  color: Color.fromARGB(255, 204, 213, 174)
                 ),
               ),
             ),
             Positioned(
-              left: 325,
-              top: 665,
-              child: Container(
-                width: 70,
-                height: 70,
+              left: 345,
+              top: 675,
+              child: SizedBox( 
+                width: 50,
+                height: 50,
                 child: Image.asset('icon/add.png'), // Path to your image asset
               ),
             ),

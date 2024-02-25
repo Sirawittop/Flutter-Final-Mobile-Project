@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import "package:flutterproject/Note.dart";
 import "ToDoList.dart";
 import "Mood.dart";
-import "Studytime.dart";
+import "studytime.dart";
 
 void main() {
   runApp(MyApp());
@@ -168,8 +168,6 @@ class MoodContainer extends StatelessWidget {
     );
   }
 }
-
-
 
 
 
