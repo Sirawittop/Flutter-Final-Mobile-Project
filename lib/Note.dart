@@ -48,7 +48,7 @@ class _NoteState extends State<Note> {
                   );
                 } else if (snapshot.data!.isEmpty) {
                   return const Center(
-                    child: Text('ไม่พบข้อมูลที่บันทึก Note'),
+                    child: Text('ไม่พบข้อมูล Note'),
                   );
                 } else {
                   return ListView.builder(
@@ -87,15 +87,20 @@ class _NoteState extends State<Note> {
                             children: [
                               const Divider(
                                 height:3,
-                                color: Colors.red,
+                                color: Color.fromARGB(255, 204, 213, 174),
                               ),
                               ListTile(
-                                title: Text(title),
+                                title: Text(title, style: const TextStyle(
+                                  fontSize: 30,
+                                  fontFamily: "Itim",
+                                  color: Color.fromARGB(255, 189, 202, 145),
+                                ),
+                                ),
                                 subtitle: Text(description),
                               ),
                               const Divider(
                                 height:3,
-                                color: Colors.red,
+                                color: Color.fromARGB(255, 204, 213, 174),
                               )
                             ],
                           ),
@@ -114,13 +119,13 @@ class _NoteState extends State<Note> {
               child: Container(
                 width: 430, // Width of the rectangle
                 height: 40, // Height of the rectangle
-                color: const Color.fromRGBO(255, 181, 167, 1),// Color of the rectangle
+                color: const Color.fromARGB(255, 204, 213, 174),// Color of the rectangle
               ),
             ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromRGBO(255, 181, 167, 1),
+        backgroundColor: const Color.fromARGB(255, 204, 213, 174),
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.push(

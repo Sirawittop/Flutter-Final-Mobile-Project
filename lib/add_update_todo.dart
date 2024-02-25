@@ -62,6 +62,7 @@ class _AddUpadetTaskState extends State<AddUpadetTask> {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
                         keyboardType: TextInputType.multiline,
+                        maxLength: 20,
                         controller: titleControler,
                         decoration: InputDecoration(
                           labelText: 'โน้ต',
@@ -84,6 +85,8 @@ class _AddUpadetTaskState extends State<AddUpadetTask> {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
                         keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        maxLength: 40,
                         controller: dateControler,
                         decoration: InputDecoration(
                           labelText: 'รายละเอียด',

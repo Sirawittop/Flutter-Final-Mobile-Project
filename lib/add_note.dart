@@ -46,13 +46,6 @@ class _AddUpadetNoteState extends State<AddUpadetNote> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Positioned(
-                child: Image.asset(
-                  'icon/study.jpg', // Load image from assets
-                  width: 200, // Width of the image
-                  height: 200, // Height of the image
-                ),
-              ),
               const SizedBox(
                   height: 100), // Add space between the image and the form
               Form(
@@ -63,9 +56,10 @@ class _AddUpadetNoteState extends State<AddUpadetNote> {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
                         keyboardType: TextInputType.multiline,
+                       maxLength: 30,
                         controller: titleControler,
                         decoration: InputDecoration(
-                          labelText: 'โน้ต',
+                          labelText: 'Title',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -85,11 +79,14 @@ class _AddUpadetNoteState extends State<AddUpadetNote> {
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
                         keyboardType: TextInputType.multiline,
+                        maxLines: null,
+                        maxLength: 200,
                         controller: dateControler,
                         decoration: InputDecoration(
                           labelText: 'รายละเอียด',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
+                            
                           ),
                         ),
                         validator: (value) {
@@ -156,7 +153,6 @@ class _AddUpadetNoteState extends State<AddUpadetNote> {
                               setState(() {
                               notelist = dbHelpernote!.getdataNote();
                               Navigator.pop(context); });
-                              print("add data success");
                             }
                           },
                           child: Container(

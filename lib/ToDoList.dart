@@ -38,6 +38,9 @@ class _ToDoListState extends State<ToDoList> {
       ),
       body: Column(
         children: [
+          SizedBox.fromSize(
+            size: const Size.fromHeight(20),
+          ),
           Expanded(
             child: FutureBuilder(
               future: dataList,
@@ -52,17 +55,18 @@ class _ToDoListState extends State<ToDoList> {
                   );
                 } else {
                   return ListView.builder(
-                    shrinkWrap:  true,
+                    shrinkWrap: true,
                     itemCount: snapshot.data!.length,
-                    itemBuilder: (context , index){
+                    itemBuilder: (context, index) {
                       int id = snapshot.data![index].id!.toInt();
                       String title = snapshot.data![index].title!.toString();
-                      String datetime = snapshot.data![index].datetime!.toString();
+                      String datetime =
+                          snapshot.data![index].datetime!.toString();
                       return Dismissible(
                         key: ValueKey<int>(id),
                         direction: DismissDirection.endToStart,
                         background: Container(
-                          color: Colors.red,
+                          color: Color.fromARGB(255, 255, 106, 96),
                           alignment: Alignment.centerRight,
                           padding: const EdgeInsets.only(right: 20),
                           child: const Icon(
@@ -70,7 +74,7 @@ class _ToDoListState extends State<ToDoList> {
                             color: Colors.white,
                           ),
                         ),
-                        onDismissed: (DismissDirection direction){
+                        onDismissed: (DismissDirection direction) {
                           setState(() {
                             dbHelper!.delete(id);
                             dataList = dbHelper!.getDataList();
@@ -78,30 +82,50 @@ class _ToDoListState extends State<ToDoList> {
                           });
                         },
                         child: Container(
-                          margin: const EdgeInsets.all(5),
-                          decoration: const BoxDecoration(
-                            color: Colors.white
-                          ),
+                          margin: const EdgeInsets.all(10),
+                          decoration: const BoxDecoration(color: Colors.white),
                           child: Column(
                             
                             children: [
                               const Divider(
-                                height:3,
+                                height: 3,
                                 color: Colors.red,
                               ),
                               ListTile(
-                                title: Text(title),
-                                subtitle: Text(datetime),
+                                title: Center(
+                                  child: Text(
+                                    title,
+                                    style: const TextStyle(
+                                      fontSize: 40,
+                                      fontFamily: "Itim",
+                                      color:  Color.fromRGBO(255, 181, 167, 1),
+                                      
+                                    ),
+                                    
+                                  ),
+                                ),
+                                subtitle: Center(
+                                  // Wrap the Text widget with Center
+                                  child: Text(
+                                    datetime,
+                                    style: const TextStyle(
+                                      fontSize: 20,
+                                      fontFamily: "Itim",
+                                      color:  Color.fromRGBO(255, 181, 167, 1),
+                                    ),
+                                  ),
+                                  
+                                ),
+                               
                               ),
                               const Divider(
-                                height:3,
+                                height: 0,
                                 color: Colors.red,
                               )
                             ],
                           ),
                         ),
                       );
-
                     },
                   );
                 }
@@ -109,14 +133,15 @@ class _ToDoListState extends State<ToDoList> {
             ),
           ),
           Positioned(
-              left: 0, // Adjust the left position of the rectangle
-              top: 770, // Adjust the top position of the rectangle
-              child: Container(
-                width: 430, // Width of the rectangle
-                height: 40, // Height of the rectangle
-                color: const Color.fromRGBO(255, 181, 167, 1),// Color of the rectangle
-              ),
+            left: 0, // Adjust the left position of the rectangle
+            top: 770, // Adjust the top position of the rectangle
+            child: Container(
+              width: 430, // Width of the rectangle
+              height: 40, // Height of the rectangle
+              color: const Color.fromRGBO(
+                  255, 181, 167, 1), // Color of the rectangle
             ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
