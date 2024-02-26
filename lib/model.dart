@@ -14,6 +14,8 @@ class TodoModel {
     return {'id': id, 'title': title, 'datetime': datetime};
   }
 }
+
+
 class NoteModel {
   final int? id;
   final String? title;
@@ -28,5 +30,23 @@ class NoteModel {
 
   Map<String, Object?> toMap() {
     return {'id': id, 'title': title, 'description': description};
+  }
+}
+
+
+class MoodEntry {
+  final int id;
+  final String date;
+  final String mood;
+
+  MoodEntry({required this.date, required this.mood, this.id = 0});
+
+  MoodEntry.fromMap(Map<String, dynamic> res)
+      : id = res['id'],
+        date = res['date'],
+        mood = res['mood'];
+
+  Map<String, Object?> toMap() {
+    return {'id': id, 'date': date, 'mood': mood};
   }
 }
