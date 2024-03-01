@@ -39,6 +39,7 @@ class _CountDowntimeState extends State<CountDowntime> {
         time?.cancel();
       } else
         duration = Duration(seconds: seconds);
+
     });
   }
 
@@ -119,9 +120,7 @@ class _CountDowntimeState extends State<CountDowntime> {
               top: 400,
               child: GestureDetector(
                 onTap: () {
-                
                     startTimer();
-                
                 },
                 child: SizedBox(
                   width: 120,
