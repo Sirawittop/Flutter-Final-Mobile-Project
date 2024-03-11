@@ -20,3 +20,8 @@ https://www.figma.com/proto/lzzXV4WpsDXOmf54QlOyuW/Mobile-Application?page-id=0%
 ## Demo
 
 https://youtu.be/HPh11Y_t4Yg
+
+## Reference
+
+- Studytime
+- Note
