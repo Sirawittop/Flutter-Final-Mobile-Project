@@ -23,5 +23,5 @@ https://youtu.be/HPh11Y_t4Yg
 
 ## Reference
 
-- Studytime
-- Note
+- https://youtu.be/xWt7dwcR1jo?si=eKq7ARac6hH3gyFR
+- https://youtu.be/Bw6zc1nncyA?si=AbMSfrz9YU8dcMoh
